@@ -1,0 +1,66 @@
+<!--<!doctype html>-->
+<?php echo $this->doctype(); ?>
+<html>
+    <head>
+<!--        <title>Framework  eseley</title>
+        <meta charset="utf-8">-->
+        <?php echo $this->headMeta(); ?>
+        <?php echo $this->headTitle(); ?>
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <!-- Le styles -->
+        <link href="/bootstrap.css" rel="stylesheet">
+        <style type="text/css">
+            body {
+                padding-top: 60px;
+            }
+        </style>
+
+        <!-- Le fav and touch icons -->
+        <link rel="shortcut icon" href="/images/favicon.ico">
+        <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+
+    </head>
+
+    <body>
+
+        <div class="topbar">
+            <div class="topbar-inner">
+                <div class="container-fluid">
+                    <a class="brand" href="/">f r m b a s e</a>
+                    <?php echo $this->navigation()->menu(); ?>
+                    <p class="pull-right">
+                        <?php
+                        $auth = Zend_Auth::getInstance();
+                        if ( $auth->hasIdentity()) : ?>
+                        <a class="show">Usuario: <?php echo $auth->getIdentity()->username ?></a> <a href="/authentication/logout">Logout</a>
+                        <?php else : ?>
+                            <a href="/authentication/login/">Login</a>
+                        <?php endif; ?>
+                    </p>
+                    <?php /* <p class="pull-right">Logged in as <a href="#">username</a></p> */ ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="content">
+
+                <?php echo $this->layout()->content; ?>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>&copy; Blog creado con Zend Framework <?php echo date('Y') ?></p>
+        </footer>
+
+    </body>
+</html>
+

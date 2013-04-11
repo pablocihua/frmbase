@@ -1,0 +1,35 @@
+<?php // echo dirname( dirname(__FILE__) ); ?>
+    <h2>Listado de posts</h2>
+
+    <a class="" href="/posts/posts/add"><button class="btn small">Nuevo</button></a>
+    
+    <?php if (count( $this->paginator ) ): ?>
+    <?php echo $this->paginator; ?>
+    <?php endif; ?>
+    
+    
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Titulo</th>
+            <th>Fecha</th>
+            <!--<td></td>-->
+        </tr>
+        <?php if ( count($this->paginator) ) : ?>
+        <?php foreach ($this->paginator as $posts) { ?>
+        <tr>
+            <td><?php echo $posts->id ?></td>
+            <td><?php echo $posts->title ?></td>
+            <td><?php echo $posts->created_at ?></td>
+        </tr>
+        <?php } else : ?>
+        <tr>
+            <td colspan="3">No hay datos</td>
+        </tr>
+            <?php endif; ?>
+    </table>
+    
+    <p>
+    <?php if (count( $this->paginator ) ): ?>
+    <?php echo $this->paginator; ?>
+    <?php endif; ?></p>
